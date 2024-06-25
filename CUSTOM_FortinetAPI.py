@@ -9,7 +9,7 @@ from functools import wraps
 def log_function_call(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
-        logger = logging.getLogger(f"MLFortinetAPI_{args[0].Ipaddress}")
+        logger = logging.getLogger(f"CUSTOM_FortinetAPI_{args[0].Ipaddress}")
         function_name = func.__name__
         logger.info(f"Start {function_name}")
         try:
@@ -21,7 +21,7 @@ def log_function_call(func):
             raise
     return wrapper
     
-class MLFortinetAPI(Fortigate, FortigateAPI):
+class CUSTOM_FortinetAPI(Fortigate, FortigateAPI):
     def __init__(self, Ipaddress):
         self.Ipaddress = Ipaddress
         passwd="password"
@@ -31,7 +31,7 @@ class MLFortinetAPI(Fortigate, FortigateAPI):
         self.payload={'username': 'admin','secretkey': passwd}
         
     def _configure_logger(self):
-        logger = logging.getLogger(f"MLFortinetAPI_{self.Ipaddress}")
+        logger = logging.getLogger(f"CUSTOM_FortinetAPI_{self.Ipaddress}")
         logger.setLevel(logging.DEBUG)
         
         logs_folder = "Logs"
