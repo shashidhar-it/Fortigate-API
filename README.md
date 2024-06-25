@@ -29,6 +29,7 @@ api = CUSTOM_FortinetAPI('192.168.1.1')
 Retrieve CPU Data:
 
 cpu_data = api.get_cpu_data()
+
 print(cpu_data)
 
 # Contributing
